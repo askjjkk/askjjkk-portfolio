@@ -28,6 +28,7 @@ export function buildRequest(data) {
     `Услуга: ${service?.name ?? ""}`,
   ];
   if (clean(data.name)) lines.push(`Имя: ${clean(data.name)}`);
+  if (service?.terms) lines.push(`Условия пакета: ${service.terms}`);
   lines.push(`Контакт для ответа: ${clean(data.contact)}`);
   if (service?.minecraft)
     lines.push(

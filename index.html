@@ -40,9 +40,15 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;450;500;550;600;650;700;750&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
       media="print"
-      onload="this.media='all'"
+      onload="this.media = 'all'"
     />
-    <noscript><style>.preloader { display: none; }</style></noscript>
+    <noscript
+      ><style>
+        .preloader {
+          display: none;
+        }
+      </style></noscript
+    >
   </head>
   <body>
     <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -92,8 +98,15 @@
         </nav>
         <div class="header-actions">
           <span class="availability"><i></i>Открыт к предложениям</span
-          ><button class="header-contact magnetic" data-contact>
-            Обсудить проект <span>↗</span></button
+          ><a
+            class="header-contact magnetic"
+            href="https://t.me/askjjkk"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Написать в Telegram"
+          >
+            <span class="contact-label-full">Написать в Telegram</span
+            ><span class="contact-label-short">Telegram</span> <span>↗</span></a
           ><button
             class="menu-toggle"
             aria-label="Открыть меню"
@@ -150,9 +163,14 @@
             <div class="hero-buttons">
               <a class="button button-light magnetic" href="#projects"
                 >Посмотреть проекты <span>↗</span></a
-              ><button class="text-button magnetic" data-contact>
-                Обсудить задачу <span>↗</span>
-              </button>
+              ><a
+                class="text-button magnetic"
+                href="https://t.me/askjjkk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Написать в Telegram <span>↗</span>
+              </a>
             </div>
           </div>
           <div class="hero-baseline hero-enter">
@@ -204,7 +222,9 @@
           </div>
           <div id="project-grid" class="project-grid"></div>
           <div class="projects-footnote mono">
-            <span>СХЕМАТИЧНЫЕ ПРЕВЬЮ ИНТЕРФЕЙСОВ</span
+            <span
+              >ВЕБ-САЙТЫ — РЕАЛЬНЫЕ КАДРЫ / ОСТАЛЬНЫЕ ПРОЕКТЫ — СХЕМЫ
+              ИНТЕРФЕЙСОВ</span
             ><a
               href="https://github.com/askjjkk"
               target="_blank"
@@ -376,6 +396,52 @@
               затем согласуем условия.
             </p>
           </div>
+          <article
+            class="pilot-package spotlight"
+            aria-labelledby="pilot-title"
+          >
+            <div class="pilot-intro">
+              <span class="mono pilot-eyebrow"
+                >ПОНЯТНЫЙ СТАРТ / ПИЛОТНЫЙ ПАКЕТ</span
+              >
+              <h3 id="pilot-title">
+                Сайт для вашей<br /><em>первой задачи.</em>
+              </h3>
+              <p>
+                Одностраничный сайт для мастера, услуги или небольшого проекта.
+                Сначала согласуем структуру и результат.
+              </p>
+              <div class="pilot-price">7 900 <span>₽</span></div>
+              <span class="pilot-availability mono"
+                >Пилотная цена для первых двух заказов</span
+              >
+            </div>
+            <div class="pilot-details">
+              <ul class="pilot-includes">
+                <li><span>01</span> До пяти блоков на одной странице</li>
+                <li><span>02</span> Мобильная версия</li>
+                <li><span>03</span> Кнопки связи и размещение сайта</li>
+                <li><span>04</span> Один согласованный круг правок</li>
+              </ul>
+              <p class="pilot-conditions">
+                Фото, тексты и сведения предоставляет клиент. Домен и хостинг
+                оплачиваются отдельно напрямую сервисам. Точный срок и состав
+                страницы согласуем перед началом.
+              </p>
+              <div class="pilot-actions">
+                <a
+                  class="button button-light"
+                  href="https://t.me/askjjkk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Обсудить в Telegram <span>↗</span></a
+                >
+                <button class="text-button" data-contact data-service="pilot">
+                  Подготовить письмо <span>↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
           <div id="service-list" class="service-list"></div>
         </section>
 
@@ -418,15 +484,20 @@
             Начнём с задачи и ожидаемого результата.
           </p>
           <div class="footer-buttons">
-            <button class="button button-light magnetic" data-contact>
-              Обсудить проект <span>↗</span></button
+            <a
+              class="button button-light magnetic"
+              href="https://t.me/askjjkk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Написать в Telegram <span>↗</span></a
             ><a
               class="button button-outline magnetic"
               href="https://t.me/askjjkkproject"
               target="_blank"
               rel="noopener noreferrer"
               >Telegram-канал <span>↗</span></a
-            ><a class="text-button" href="#projects">Все проекты ↑</a>
+            ><button class="text-button" data-contact>Написать письмо ↗</button>
           </div>
         </div>
         <div class="footer-bottom">
@@ -461,6 +532,14 @@
           Опишите, что хотите сделать. Чем больше полезных деталей, тем проще
           оценить объём работы.
         </p>
+        <a
+          class="dialog-direct-telegram"
+          href="https://t.me/askjjkk"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><span>Написать в Telegram <small>@askjjkk</small></span
+          ><span>↗</span></a
+        >
         <form id="contact-form" novalidate>
           <div class="form-pair">
             <div class="form-field">

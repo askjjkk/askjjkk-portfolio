@@ -1,3 +1,5 @@
+import { screenshotFanMarkup } from "./projectMedia.js";
+
 const dots = '<span class="window-dots"><i></i><i></i><i></i></span>';
 const line = (width = 75) => `<i class="ui-line" style="width:${width}%"></i>`;
 const windowTop = (title) =>
@@ -40,5 +42,6 @@ const previews = {
 };
 
 export function previewMarkup(project, expanded = false) {
+  if (project.screenshots) return screenshotFanMarkup(project, expanded);
   return `<div class="preview-fan ${expanded ? "expanded" : ""}" aria-hidden="true">${previews[project.id].map((markup, i) => `<div class="mini-window mini-${i}">${markup}<span class="preview-caption">${project.previews[i]}</span></div>`).join("")}</div>`;
 }

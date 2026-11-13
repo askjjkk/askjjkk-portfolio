@@ -9,6 +9,7 @@ export function renderContent() {
     )
     .join("");
   document.getElementById("service-list").innerHTML = services
+    .filter((service) => !service.standalone)
     .map(
       (service, i) =>
         `<article class="service-row"><span class="service-index mono">0${i + 1}</span><h3>${service.name}</h3><div class="service-description"><p>${service.description}</p><span class="mono">${service.tech}</span></div><span class="service-price">По задаче</span><button class="service-action" data-contact data-service="${service.id}" aria-label="Обсудить: ${service.name}">Обсудить <span>→</span></button></article>`,

@@ -6,6 +6,77 @@ async function openPage(page) {
   await expect(page.locator("#preloader")).toHaveCSS("visibility", "hidden");
 }
 
+test("Telegram, бизнес-сайты, реальные скриншоты и пилотный пакет", async ({
+  page,
+}) => {
+  await openPage(page);
+  const telegram = page.locator(".header-contact");
+  await expect(telegram).toHaveAttribute("href", "https://t.me/askjjkk");
+  await expect(telegram).not.toHaveAttribute("data-contact", "");
+  const order = await page
+    .locator(".project-card")
+    .evaluateAll((cards) =>
+      cards.slice(0, 3).map((card) => card.dataset.project),
+    );
+  expect(order).toEqual(["kktatoo", "heating", "bio"]);
+  for (const id of ["kktatoo", "heating", "bio", "modsmith"]) {
+    await page.locator(`[data-project="${id}"] .project-open`).click();
+    await expect(page.locator("#project-modal")).toBeVisible();
+    await expect(
+      page.locator("#project-detail a", { hasText: "Посмотреть сайт" }),
+    ).toHaveCount(1);
+    await expect(page.locator("#gallery-image")).toBeVisible();
+    await expect
+      .poll(() =>
+        page
+          .locator("#gallery-image")
+          .evaluate((img) => img.complete && img.naturalWidth > 0),
+      )
+      .toBe(true);
+    await page.locator('[data-screenshot="2"]').click();
+    await expect(page.locator('[data-screenshot="2"]')).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await expect(page.locator("#gallery-image")).toHaveAttribute(
+      "src",
+      new RegExp(`${id}-mobile.jpg$`),
+    );
+    await expect(page.locator("#gallery-caption")).toHaveText("Телефон");
+    if (id === "heating")
+      await expect(page.locator(".project-detail-status")).toContainText(
+        "Демонстрационный",
+      );
+    await page.keyboard.press("Escape");
+  }
+  await page.locator('[data-service="pilot"]').click();
+  await expect(page.locator("#client-service")).toHaveValue("pilot");
+  await expect(page.locator("#minecraft-fields")).not.toBeVisible();
+  await page.locator("#client-contact").fill("test@example.com");
+  await page.locator("#client-description").fill("Нужен сайт для мастера");
+  await page.evaluate(() => {
+    window.__pilotMail = "";
+    document.addEventListener(
+      "click",
+      (event) => {
+        const anchor = event.target.closest('a[href^="mailto:"]');
+        if (anchor) {
+          event.preventDefault();
+          window.__pilotMail = anchor.href;
+        }
+      },
+      true,
+    );
+  });
+  await page.locator("#contact-form button[type=submit]").click();
+  const body = new URL(
+    await page.evaluate(() => window.__pilotMail),
+  ).searchParams.get("body");
+  expect(body).toContain("7 900");
+  expect(body).toContain("один круг правок");
+  expect(body).toContain("Домен и хостинг оплачиваются отдельно");
+});
+
 test("сцена, адаптив, секции, ссылки и отсутствие ошибок", async ({
   page,
 }, testInfo) => {
@@ -29,8 +100,8 @@ test("сцена, адаптив, секции, ссылки и отсутств
     "data-instances",
     width < 768 ? "1152" : "2304",
   );
-  await expect(page.locator(".project-card")).toHaveCount(6);
-  await expect(page.locator(".mini-window")).toHaveCount(18);
+  await expect(page.locator(".project-card")).toHaveCount(8);
+  await expect(page.locator(".mini-window")).toHaveCount(24);
   await expect(page.locator(".service-row")).toHaveCount(6);
   await expect(page.locator(".process-card")).toHaveCount(4);
   const qualityBounds = await page.evaluate(() => ({
@@ -91,7 +162,7 @@ test("сцена, адаптив, секции, ссылки и отсутств
       .evaluate((el) => getComputedStyle(el).transform);
     expect(transform).not.toBe("none");
   }
-  await page.locator(".project-open").first().click();
+  await page.locator('[data-project="umbra"] .project-open').click();
   await expect(page.locator("#project-modal")).toBeVisible();
   await expect(page.locator("#project-title")).toHaveText(
     "Umbra — лаунчер и игровой интерфейс",
@@ -102,7 +173,9 @@ test("сцена, адаптив, секции, ссылки и отсутств
   await expect(page.locator("#project-detail a")).toHaveCount(0);
   await page.keyboard.press("Escape");
   await expect(page.locator("#project-modal")).not.toBeVisible();
-  await expect(page.locator(".project-open").first()).toBeFocused();
+  await expect(
+    page.locator('[data-project="umbra"] .project-open'),
+  ).toBeFocused();
   await page.locator(".quality-chapter").nth(2).scrollIntoViewIfNeeded();
   await expect(page.locator("#quality-counter")).toHaveText("03");
   if (width >= 768) {
@@ -224,19 +297,23 @@ test("отказ WebGL, reduced-motion и медленные шрифты не �
       .locator(".marquee-track")
       .evaluate((el) => getComputedStyle(el).transform),
   ).toBe(before);
-  await page.locator(".header-contact").click();
+  await page.locator(".footer [data-contact]").click();
   await expect(page.locator("#contact-modal")).toBeVisible();
   await page.keyboard.press("Escape");
-  await page.locator(".hero-buttons a").click();
+  await page.locator('.hero-buttons a[href="#projects"]').click();
   expect(await page.evaluate(() => window.location.hash)).toBe("#projects");
 });
 
-test("зависшая таблица шрифтов не блокирует первый экран и приложение", async ({ page }) => {
+test("зависшая таблица шрифтов не блокирует первый экран и приложение", async ({
+  page,
+}) => {
   await page.route("https://fonts.googleapis.com/**", () => {});
   await page.goto("./", { waitUntil: "commit" });
-  await page.waitForFunction(() => window.__portfolioReady === true, null, { timeout: 3500 });
+  await page.waitForFunction(() => window.__portfolioReady === true, null, {
+    timeout: 3500,
+  });
   await expect(page.locator("h1")).toBeVisible();
   await expect(page.locator("#preloader")).toHaveCSS("visibility", "hidden");
-  await page.locator(".header-contact").click();
+  await page.locator(".footer [data-contact]").click();
   await expect(page.locator("#contact-modal")).toBeVisible();
 });

@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { projects, services } from "../data/content.js";
 import { previewMarkup } from "./previews.js";
+import { projectGalleryMarkup, initProjectGallery } from "./projectMedia.js";
 import { validateRequest, buildRequest, buildMailto } from "./request.js";
 
 export function initModals(lenis, reducedMotion) {
@@ -110,7 +111,14 @@ export function initModals(lenis, reducedMotion) {
       );
       const detail = document.getElementById("project-detail");
       detail.style.setProperty("--project-accent", data.accent);
-      detail.innerHTML = `<span class="dialog-eyebrow mono">${data.category.toUpperCase()}</span><h2 id="project-title">${data.title}</h2><span class="project-detail-status">${data.status}</span><div class="project-detail-scene">${previewMarkup(data, true)}</div><span class="project-detail-label mono">Схематичное превью интерфейса</span><p>${data.description}</p><p class="project-detail-more">${data.detail}</p><div class="project-detail-tech">${data.tech.map((tech) => `<span>${tech}</span>`).join("")}</div><div class="project-detail-links">${data.links.map((link) => `<a class="button button-outline" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label} ↗</a>`).join("")}</div>`;
+      const media = data.screenshots
+        ? projectGalleryMarkup(data)
+        : `<div class="project-detail-scene">${previewMarkup(data, true)}</div><span class="project-detail-label mono">Схематичное превью интерфейса</span>`;
+      const links = data.links.length
+        ? `<div class="project-detail-links">${data.links.map((link) => `<a class="button ${link.label === "Посмотреть сайт" ? "button-light" : "button-outline"}" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label} ↗</a>`).join("")}</div>`
+        : "";
+      detail.innerHTML = `<span class="dialog-eyebrow mono">${data.category.toUpperCase()}</span><h2 id="project-title">${data.title}</h2><span class="project-detail-status">${data.status}</span>${links}${media}<p>${data.description}</p><p class="project-detail-more">${data.detail}</p><div class="project-detail-tech">${data.tech.map((tech) => `<span>${tech}</span>`).join("")}</div>`;
+      if (data.screenshots) initProjectGallery(detail, data);
       open(project, button);
     }),
   );
