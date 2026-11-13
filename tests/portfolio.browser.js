@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 async function openPage(page) {
-  await page.goto("./");
+  await page.goto("./", { waitUntil: "domcontentloaded" });
   await page.waitForFunction(() => window.__portfolioReady === true);
   await expect(page.locator("#preloader")).toHaveCSS("visibility", "hidden");
 }
@@ -105,6 +105,13 @@ test("сцена, адаптив, секции, ссылки и отсутств
   await expect(page.locator(".project-open").first()).toBeFocused();
   await page.locator(".quality-chapter").nth(2).scrollIntoViewIfNeeded();
   await expect(page.locator("#quality-counter")).toHaveText("03");
+  if (width >= 768) {
+    const sticky = await page.locator(".quality-showcase").boundingBox();
+    expect(sticky.y).toBeGreaterThanOrEqual(90);
+    expect(sticky.y + sticky.height).toBeLessThanOrEqual(
+      testInfo.project.use.viewport.height,
+    );
+  }
   expect(assetErrors).toEqual([]);
   expect(errors).toEqual([]);
 });
@@ -222,4 +229,14 @@ test("отказ WebGL, reduced-motion и медленные шрифты не �
   await page.keyboard.press("Escape");
   await page.locator(".hero-buttons a").click();
   expect(await page.evaluate(() => window.location.hash)).toBe("#projects");
+});
+
+test("зависшая таблица шрифтов не блокирует первый экран и приложение", async ({ page }) => {
+  await page.route("https://fonts.googleapis.com/**", () => {});
+  await page.goto("./", { waitUntil: "commit" });
+  await page.waitForFunction(() => window.__portfolioReady === true, null, { timeout: 3500 });
+  await expect(page.locator("h1")).toBeVisible();
+  await expect(page.locator("#preloader")).toHaveCSS("visibility", "hidden");
+  await page.locator(".header-contact").click();
+  await expect(page.locator("#contact-modal")).toBeVisible();
 });

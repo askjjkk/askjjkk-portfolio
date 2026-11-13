@@ -44,7 +44,7 @@ npm run preview
 В отдельном терминале запустите `npm run preview -- --port 4173 --strictPort`, затем:
 
 ```sh
-npx playwright install chromium
+npx --yes playwright install chromium
 npm run test:browser
 ```
 

@@ -96,6 +96,7 @@ export function initScrollChoreo(lenis, reducedMotion) {
     );
   ScrollTrigger.refresh();
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  document.fonts?.addEventListener("loadingdone", () => ScrollTrigger.refresh());
 }
 
 function initVelocityMarquee(lenis) {
