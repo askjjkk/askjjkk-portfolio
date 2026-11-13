@@ -18,8 +18,8 @@ test("Telegram, бизнес-сайты, реальные скриншоты и 
     .evaluateAll((cards) =>
       cards.slice(0, 3).map((card) => card.dataset.project),
     );
-  expect(order).toEqual(["kktatoo", "heating", "bio"]);
-  for (const id of ["kktatoo", "heating", "bio", "modsmith"]) {
+  expect(order).toEqual(["kktatoo", "heating", "gran"]);
+  for (const id of ["kktatoo", "heating", "gran", "modsmith"]) {
     await page.locator(`[data-project="${id}"] .project-open`).click();
     await expect(page.locator("#project-modal")).toBeVisible();
     await expect(

@@ -3,18 +3,26 @@ import assert from "node:assert/strict";
 import { projects, services } from "../src/data/content.js";
 import { buildRequest, validateRequest } from "../src/components/request.js";
 
-test("бизнес-сайты открывают витрину, старые проекты сохранены", () => {
+test("тату-портфолио, каталог и Грань открывают витрину", () => {
   assert.deepEqual(
     projects.slice(0, 3).map((project) => project.id),
-    ["kktatoo", "heating", "bio"],
+    ["kktatoo", "heating", "gran"],
   );
   assert.equal(projects.length, 8);
+  assert.equal(
+    projects.some((project) => project.id === "bio"),
+    false,
+  );
+  assert.equal(
+    projects.find((project) => project.id === "gran").links[0].url,
+    "https://askjjkk.github.io/gran-minecraft/",
+  );
   assert.ok(projects.find((project) => project.id === "umbra"));
   assert.ok(projects.find((project) => project.id === "axiom"));
 });
 
 test("четыре веб-проекта имеют реальные кадры и прямую демонстрацию", () => {
-  for (const id of ["kktatoo", "heating", "bio", "modsmith"]) {
+  for (const id of ["kktatoo", "heating", "gran", "modsmith"]) {
     const project = projects.find((item) => item.id === id);
     assert.equal(project.screenshots.length, 3);
     assert.ok(

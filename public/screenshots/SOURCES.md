@@ -6,7 +6,9 @@
 |---|---|---|
 | kktatoo | https://askjjkk.github.io/kktatoo/ | Галерея работ |
 | heating | https://askjjkk.github.io/heating-catalog/ | Каталог товаров |
-| bio | https://bio-askjjkk.netlify.app/ | Информация и технологии |
+| gran | https://askjjkk.github.io/gran-minecraft/ | О сервере |
 | modsmith | https://askjjkk.github.io/modsmith/ | Раздел диагностики |
 
 Суффиксы: `-desktop.jpg`, `-detail.jpg`, `-mobile.jpg`. Heating Catalog — демонстрационный проект с примером ассортимента.
+
+Кадры `bio-*` сохранены от предыдущего состава портфолио и в текущих карточках не используются.
