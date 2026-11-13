@@ -1,0 +1,225 @@
+import { test, expect } from "@playwright/test";
+
+async function openPage(page) {
+  await page.goto("./");
+  await page.waitForFunction(() => window.__portfolioReady === true);
+  await expect(page.locator("#preloader")).toHaveCSS("visibility", "hidden");
+}
+
+test("сцена, адаптив, секции, ссылки и отсутствие ошибок", async ({
+  page,
+}, testInfo) => {
+  const errors = [];
+  const assetErrors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  page.on("response", (response) => {
+    if (
+      response.status() >= 400 &&
+      response.url().includes("/askjjkk-portfolio/")
+    )
+      assetErrors.push(response.url());
+  });
+  await openPage(page);
+  await expect(page.locator("html")).toHaveClass(/webgl-ready/);
+  const width = testInfo.project.use.viewport.width;
+  await expect(page.locator("#webgl-canvas")).toHaveAttribute(
+    "data-instances",
+    width < 768 ? "1152" : "2304",
+  );
+  await expect(page.locator(".project-card")).toHaveCount(6);
+  await expect(page.locator(".mini-window")).toHaveCount(18);
+  await expect(page.locator(".service-row")).toHaveCount(6);
+  await expect(page.locator(".process-card")).toHaveCount(4);
+  const qualityBounds = await page.evaluate(() => ({
+    stage: document.querySelector(".quality-stage").getBoundingClientRect()
+      .bottom,
+    button: document.querySelector(".spec-button").getBoundingClientRect()
+      .bottom,
+  }));
+  expect(qualityBounds.button).toBeLessThanOrEqual(qualityBounds.stage + 1);
+  const anchorErrors = await page
+    .locator('a[href^="#"]')
+    .evaluateAll((links) =>
+      links
+        .filter((link) => !document.getElementById(link.hash.slice(1)))
+        .map((link) => link.hash),
+    );
+  expect(anchorErrors).toEqual([]);
+  await page.screenshot({ path: `artifacts/hero-${width}.png` });
+  if (width < 768) {
+    await page.locator(".menu-toggle").click();
+    await expect(page.locator("#mobile-nav")).toBeVisible();
+    await page.locator('#mobile-nav a[href="#projects"]').click();
+    await expect(page.locator("#mobile-nav")).not.toBeVisible();
+    await expect(page.locator(".menu-toggle")).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
+  }
+  for (const selector of [
+    "#projects",
+    "#about",
+    "#services",
+    "#process",
+    ".footer",
+  ]) {
+    await page.locator(selector).scrollIntoViewIfNeeded();
+    await page.waitForTimeout(350);
+    const sizes = await page.evaluate(() => ({
+      scroll: document.documentElement.scrollWidth,
+      inner: innerWidth,
+    }));
+    expect(sizes.scroll).toBeLessThanOrEqual(sizes.inner);
+    await page.screenshot({
+      path: `artifacts/${selector.replace(/[#.]/g, "")}-${width}.png`,
+    });
+  }
+  await page.locator(".project-card").first().scrollIntoViewIfNeeded();
+  if (width < 768)
+    await expect(page.locator(".project-card").first()).toHaveClass(
+      /is-fanned/,
+    );
+  else if (width > 1024) {
+    await page.locator(".project-card").first().hover();
+    const transform = await page
+      .locator(".project-card")
+      .first()
+      .locator(".mini-0")
+      .evaluate((el) => getComputedStyle(el).transform);
+    expect(transform).not.toBe("none");
+  }
+  await page.locator(".project-open").first().click();
+  await expect(page.locator("#project-modal")).toBeVisible();
+  await expect(page.locator("#project-title")).toHaveText(
+    "Umbra — лаунчер и игровой интерфейс",
+  );
+  await expect(page.locator("#project-detail")).toContainText(
+    "Схематичное превью интерфейса",
+  );
+  await expect(page.locator("#project-detail a")).toHaveCount(0);
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#project-modal")).not.toBeVisible();
+  await expect(page.locator(".project-open").first()).toBeFocused();
+  await page.locator(".quality-chapter").nth(2).scrollIntoViewIfNeeded();
+  await expect(page.locator("#quality-counter")).toHaveText("03");
+  expect(assetErrors).toEqual([]);
+  expect(errors).toEqual([]);
+});
+
+test("форма: услуга, Minecraft, валидация, фокус, mailto и копирование", async ({
+  page,
+  context,
+}, testInfo) => {
+  await openPage(page);
+  await page.locator('[data-service="mc-mod"]').click();
+  await expect(page.locator("#contact-modal")).toBeVisible();
+  await expect(page.locator("#client-service")).toHaveValue("mc-mod");
+  await expect(page.locator("#minecraft-fields")).toBeVisible();
+  await expect(page.locator("#page-shell")).toHaveAttribute("inert", "");
+  await page.locator("#contact-form button[type=submit]").click();
+  await expect(page.locator("#client-contact")).toHaveAttribute(
+    "aria-invalid",
+    "true",
+  );
+  await expect(page.locator("#client-contact")).toBeFocused();
+  await expect(page.locator("#version-error")).not.toBeEmpty();
+  await page.locator("#client-contact").fill("test@example.com");
+  await page.locator("#client-version").fill("1.21.1");
+  await page.locator("#client-platform").fill("Fabric");
+  await page
+    .locator("#client-description")
+    .fill("Кисть & интерфейс\nТестовая задача + детали");
+  await page.screenshot({
+    path: `artifacts/form-${testInfo.project.use.viewport.width}.png`,
+  });
+  await page.evaluate(() => {
+    window.__capturedMailto = "";
+    document.addEventListener(
+      "click",
+      (event) => {
+        const link = event.target.closest('a[href^="mailto:"]');
+        if (link) {
+          event.preventDefault();
+          window.__capturedMailto = link.href;
+        }
+      },
+      true,
+    );
+  });
+  await page.locator("#contact-form button[type=submit]").click();
+  const mailto = await page.evaluate(() => window.__capturedMailto);
+  expect(mailto).toContain("mailto:askjjkk03@gmail.com?");
+  expect(new URL(mailto).searchParams.get("body")).toContain(
+    "Платформа: Fabric",
+  );
+  await expect(page.locator("#form-status")).toContainText(
+    "Письмо подготовлено",
+  );
+  await expect(page.locator("#form-status")).not.toContainText("отправлена");
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.locator("#copy-request").click();
+  await expect(page.locator("#form-status")).toContainText(
+    "Заявка скопирована",
+  );
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toContain(
+    "Кисть & интерфейс",
+  );
+  await page.evaluate(() =>
+    Object.defineProperty(navigator.clipboard, "writeText", {
+      configurable: true,
+      value: () => Promise.reject(new Error("denied")),
+    }),
+  );
+  await page.locator("#copy-request").click();
+  await expect(page.locator("#manual-copy")).toBeVisible();
+  await expect(page.locator("#request-text")).toHaveValue(
+    /Версия Minecraft: 1.21.1/,
+  );
+  await page.locator("#client-service").selectOption("landing");
+  await expect(page.locator("#minecraft-fields")).not.toBeVisible();
+  await page.locator("#copy-email").focus();
+  await page.keyboard.press("Tab");
+  await expect(page.locator("#contact-modal [data-close]")).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#contact-modal")).not.toBeVisible();
+  await expect(page.locator('[data-service="mc-mod"]')).toBeFocused();
+  expect(await page.locator("#page-shell").evaluate((el) => el.inert)).toBe(
+    false,
+  );
+});
+
+test("отказ WebGL, reduced-motion и медленные шрифты не блокируют контент", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.addInitScript(() => {
+    const getContext = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function (type, ...args) {
+      return type.startsWith("webgl")
+        ? null
+        : getContext.call(this, type, ...args);
+    };
+  });
+  await page.route("https://fonts.googleapis.com/**", (route) => route.abort());
+  await openPage(page);
+  await expect(page.locator("html")).toHaveClass(/webgl-unavailable/);
+  await expect(page.locator(".world-fallback")).toBeVisible();
+  await expect(page.locator("h1")).toBeVisible();
+  const before = await page
+    .locator(".marquee-track")
+    .evaluate((el) => getComputedStyle(el).transform);
+  await page.waitForTimeout(250);
+  expect(
+    await page
+      .locator(".marquee-track")
+      .evaluate((el) => getComputedStyle(el).transform),
+  ).toBe(before);
+  await page.locator(".header-contact").click();
+  await expect(page.locator("#contact-modal")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.locator(".hero-buttons a").click();
+  expect(await page.evaluate(() => window.location.hash)).toBe("#projects");
+});

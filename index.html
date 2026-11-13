@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#060608" />
+    <title>askjjkk — Александр | Сайты, Telegram-боты и Minecraft.</title>
+    <meta
+      name="description"
+      content="Портфолио Александра — askjjkk. Сайты, Telegram-боты, небольшие программы и проекты для Minecraft. Избранные работы, технологии и связь по вопросам разработки."
+    />
+    <link rel="canonical" href="https://askjjkk.github.io/askjjkk-portfolio/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta
+      property="og:title"
+      content="askjjkk — Александр · Разработка и проекты"
+    />
+    <meta
+      property="og:description"
+      content="Сайты, Telegram-боты и проекты для Minecraft. Идеи, которые стали проектами."
+    />
+    <meta
+      property="og:url"
+      content="https://askjjkk.github.io/askjjkk-portfolio/"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;450;500;550;600;650;700;750&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      window.__portfolioReady = false;
+      window.setTimeout(() => {
+        document.documentElement.classList.add("page-visible");
+        document
+          .getElementById("preloader")
+          ?.setAttribute("aria-hidden", "true");
+      }, 1800);
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <div id="preloader" class="preloader" aria-hidden="true">
+      <div class="preloader-top">
+        <span class="wordmark">askjjkk<span class="logo-star">✳</span></span
+        ><span class="mono">ЛИЧНОЕ / ПОРТФОЛИО</span>
+      </div>
+      <div class="preloader-center">
+        <span class="preloader-label mono">СОБИРАЮ ДЕТАЛИ ВОЕДИНО</span
+        ><span id="load-counter">00<span>%</span></span>
+        <div class="preloader-line"><i id="load-progress"></i></div>
+      </div>
+      <span class="mono">АЛЕКСАНДР / РАЗРАБОТКА И ПРОЕКТЫ</span>
+    </div>
+    <div class="world-fallback" aria-hidden="true">
+      <div class="fallback-orbit"></div>
+      <div class="fallback-grid"></div>
+    </div>
+    <canvas id="webgl-canvas" aria-hidden="true"></canvas>
+    <div class="world-vignette" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="custom-cursor cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor cursor-ring" aria-hidden="true">
+      <span>↗</span>
+    </div>
+
+    <div id="page-shell">
+      <header class="site-header">
+        <a class="wordmark" href="#top" aria-label="askjjkk — в начало"
+          >askjjkk<svg
+            class="brand-symbol"
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+          >
+            <path
+              d="M16 1 20 12 31 16 20 20 16 31 12 20 1 16 12 12Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.4"
+            />
+            <path d="m6 6 20 20M26 6 6 26" stroke="currentColor" /></svg
+        ></a>
+        <nav class="desktop-nav" aria-label="Главная навигация">
+          <a href="#projects">Проекты</a><a href="#about">Обо мне</a
+          ><a href="#services">Услуги</a><a href="#process">Как работаю</a>
+        </nav>
+        <div class="header-actions">
+          <span class="availability"><i></i>Открыт к предложениям</span
+          ><button class="header-contact magnetic" data-contact>
+            Обсудить проект <span>↗</span></button
+          ><button
+            class="menu-toggle"
+            aria-label="Открыть меню"
+            aria-controls="mobile-nav"
+            aria-expanded="false"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+        <nav
+          id="mobile-nav"
+          class="mobile-nav"
+          aria-label="Мобильная навигация"
+          hidden
+        >
+          <a href="#projects">Проекты <span>01</span></a
+          ><a href="#about">Обо мне <span>02</span></a
+          ><a href="#services">Услуги <span>03</span></a
+          ><a href="#process">Как работаю <span>04</span></a
+          ><span class="availability"><i></i>Открыт к предложениям</span>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section id="top" class="hero container" aria-labelledby="hero-title">
+          <div class="hero-topline mono hero-enter">
+            <span><i class="tiny-cross">+</i> АЛЕКСАНДР / ASKJJKK</span
+            ><span class="hero-edition"
+              >ЛИЧНОЕ ПОРТФОЛИО — <span data-year>2026</span></span
+            >
+          </div>
+          <div class="hero-main">
+            <h1 id="hero-title">
+              <span class="title-line"><span>Создаю сайты,</span></span
+              ><span class="title-line"
+                ><span>ботов и <em>проекты</em></span></span
+              ><span class="title-line"
+                ><span
+                  >для Minecraft<span class="title-period">.</span></span
+                ></span
+              >
+            </h1>
+            <div class="hero-aside hero-enter">
+              <div class="orbit-mark" aria-hidden="true"><span>✳</span></div>
+              <p class="mono">ИЗ ИДЕИ<br />В ИНТЕРФЕЙС</p>
+              <span class="coordinate mono">JAVA · WEB · PLAY</span>
+            </div>
+          </div>
+          <div class="hero-bottom hero-enter">
+            <p class="hero-description">
+              От небольшой страницы до собственного игрового лаунчера. Уделяю
+              внимание внешнему виду, понятному интерфейсу и деталям.
+            </p>
+            <div class="hero-buttons">
+              <a class="button button-light magnetic" href="#projects"
+                >Посмотреть проекты <span>↗</span></a
+              ><button class="text-button magnetic" data-contact>
+                Обсудить задачу <span>↗</span>
+              </button>
+            </div>
+          </div>
+          <div class="hero-baseline hero-enter">
+            <div class="hero-disciplines mono">
+              <span>Сайты и интерфейсы</span
+              ><span>Telegram и автоматизация</span
+              ><span>Minecraft и игровые инструменты</span>
+            </div>
+            <a class="scroll-cue mono" href="#projects"
+              ><span>ЛИСТАЙТЕ НИЖЕ</span><span class="scroll-arrow">↓</span></a
+            >
+          </div>
+        </section>
+
+        <div
+          class="marquee"
+          aria-label="Сайты, Telegram-боты, Minecraft, Java, Python, JavaScript, интерфейсы, автоматизация"
+        >
+          <div class="marquee-track" aria-hidden="true">
+            <div class="marquee-copy">
+              САЙТЫ <i>✳</i> TELEGRAM-БОТЫ <i>✳</i> MINECRAFT <i>✳</i> JAVA
+              <i>✳</i> PYTHON <i>✳</i> JAVASCRIPT <i>✳</i> ИНТЕРФЕЙСЫ
+              <i>✳</i> АВТОМАТИЗАЦИЯ <i>✳</i>
+            </div>
+            <div class="marquee-copy">
+              САЙТЫ <i>✳</i> TELEGRAM-БОТЫ <i>✳</i> MINECRAFT <i>✳</i> JAVA
+              <i>✳</i> PYTHON <i>✳</i> JAVASCRIPT <i>✳</i> ИНТЕРФЕЙСЫ
+              <i>✳</i> АВТОМАТИЗАЦИЯ <i>✳</i>
+            </div>
+          </div>
+        </div>
+
+        <section
+          id="projects"
+          class="projects section container"
+          aria-labelledby="projects-title"
+        >
+          <div class="section-label mono">
+            <span>01 / ИЗБРАННЫЕ РАБОТЫ</span><span>СОБСТВЕННЫЕ ПРОЕКТЫ</span>
+          </div>
+          <div class="section-heading">
+            <h2 id="projects-title" data-reveal>
+              Идеи, которые<br />стали <em>проектами.</em>
+            </h2>
+            <p>
+              Собственные разработки, инструменты<br class="desktop-break" />
+              и эксперименты с интерфейсами.
+            </p>
+          </div>
+          <div id="project-grid" class="project-grid"></div>
+          <div class="projects-footnote mono">
+            <span>СХЕМАТИЧНЫЕ ПРЕВЬЮ ИНТЕРФЕЙСОВ</span
+            ><a
+              href="https://github.com/askjjkk"
+              target="_blank"
+              rel="noopener noreferrer"
+              >БОЛЬШЕ НА GITHUB ↗</a
+            >
+          </div>
+        </section>
+
+        <section
+          id="about"
+          class="about section container"
+          aria-labelledby="about-title"
+        >
+          <div class="section-label mono">
+            <span>02 / ОБО МНЕ</span><span>ЗА ИНТЕРФЕЙСОМ — ЧЕЛОВЕК</span>
+          </div>
+          <div class="about-intro">
+            <h2 id="about-title" data-reveal>
+              Внешний вид.<br />Удобство. <em>Детали.</em>
+            </h2>
+            <div>
+              <p>
+                Привет! Я Александр — askjjkk. Учусь в ЮЗГУ на направлении
+                «Информационная безопасность» и развиваюсь в разработке. Работаю
+                над собственными сайтами, Telegram-ботами, программами и
+                инструментами для Minecraft. Мне интересны проекты, в которых
+                сочетаются оформление и практическая польза.
+              </p>
+              <span class="mono tech-label">ТЕХНОЛОГИИ В МОИХ ПРОЕКТАХ</span>
+              <div class="tech-cloud">
+                <span>Java</span><span>Python</span><span>HTML</span
+                ><span>CSS</span><span>JavaScript</span
+                ><span>Paper / Spigot</span><span>Fabric</span
+                ><span>Electron</span><span>aiogram</span><span>GitHub</span
+                ><span>Gradle</span><span>API внешних сервисов</span>
+              </div>
+            </div>
+          </div>
+          <div class="quality-layout">
+            <div class="quality-showcase spotlight">
+              <div class="showcase-header mono">
+                <span>ВНИМАНИЕ К ДЕТАЛЯМ</span
+                ><span><b id="quality-counter">01</b> / 03</span>
+              </div>
+              <div class="quality-stage">
+                <div class="quality-slide is-active" data-slide="0">
+                  <div class="design-spec">
+                    <div class="spec-type">
+                      <span class="mono">Aa / Аа</span>
+                      <div>Форма<br /><em>и смысл.</em></div>
+                    </div>
+                    <div class="spec-colors">
+                      <i></i><i></i><i></i><i></i
+                      ><span class="mono">OBSIDIAN / PAPER</span>
+                    </div>
+                    <div class="spec-controls">
+                      <div class="spec-card">
+                        <span>✳</span>
+                        <div>
+                          <b>Всё на своём месте</b
+                          ><small>Одна визуальная система</small>
+                        </div>
+                      </div>
+                      <span class="spec-button">Продолжить <i>↗</i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="quality-slide" data-slide="1" aria-hidden="true">
+                  <div class="interaction-spec">
+                    <div class="mini-nav">
+                      <span class="wordmark">askjjkk</span
+                      ><span class="mini-nav-active">Проекты</span
+                      ><span>Связь ↗</span>
+                    </div>
+                    <div class="interaction-path">
+                      <span>НАВЕСТИ</span><i></i><span>НАЖАТЬ</span><i></i
+                      ><span>ПОЛУЧИТЬ ОТВЕТ</span>
+                    </div>
+                    <div class="demo-actions">
+                      <span>Обсудить идею ↗</span><span>Открыть проект ↗</span
+                      ><span>Письмо подготовлено <i>✓</i></span>
+                    </div>
+                    <div class="interaction-caption mono">
+                      ДЕЙСТВИЕ → ПОНЯТНАЯ ОБРАТНАЯ СВЯЗЬ
+                    </div>
+                  </div>
+                </div>
+                <div class="quality-slide" data-slide="2" aria-hidden="true">
+                  <div class="device-spec">
+                    <div class="device-desktop">
+                      <div class="device-top"><i></i><i></i><i></i></div>
+                      <div class="device-content">
+                        <span class="wordmark">askjjkk ✳</span
+                        ><b>Идея.<br /><em>Форма.</em><br />Результат.</b>
+                        <div class="device-tiles"><i></i><i></i><i></i></div>
+                      </div>
+                    </div>
+                    <div class="device-phone">
+                      <span class="phone-island"></span
+                      ><span class="mono">askjjkk ✳</span
+                      ><b>Идея.<br /><em>Форма.</em><br />Результат.</b><i></i
+                      ><i></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="showcase-footer mono">
+                <span id="quality-caption">ВИЗУАЛЬНАЯ ЦЕЛЬНОСТЬ</span>
+                <div class="slide-dots" aria-hidden="true">
+                  <i class="active"></i><i></i><i></i>
+                </div>
+              </div>
+            </div>
+            <div class="quality-chapters">
+              <article class="quality-chapter" data-chapter="0">
+                <span class="chapter-number mono"
+                  >01 / ВИЗУАЛЬНАЯ ЦЕЛЬНОСТЬ</span
+                >
+                <h3>У каждой идеи —<br /><em>свой характер.</em></h3>
+                <p>
+                  У интерфейса должен быть свой характер: согласованные цвета,
+                  аккуратная типографика и понятная структура. Мне интересно
+                  работать над оформлением, в котором детали поддерживают общую
+                  идею.
+                </p>
+              </article>
+              <article class="quality-chapter" data-chapter="1">
+                <span class="chapter-number mono"
+                  >02 / ПОНЯТНОЕ ВЗАИМОДЕЙСТВИЕ</span
+                >
+                <h3>Эффекты, которые<br /><em>помогают.</em></h3>
+                <p>
+                  Эффекты дополняют интерфейс. Основные действия должны
+                  оставаться заметными, а навигация — понятной. Важны состояния
+                  кнопок, обратная связь и поведение элементов.
+                </p>
+              </article>
+              <article class="quality-chapter" data-chapter="2">
+                <span class="chapter-number mono"
+                  >03 / КОМПЬЮТЕР И ТЕЛЕФОН</span
+                >
+                <h3>Другой экран.<br /><em>Та же идея.</em></h3>
+                <p>
+                  На маленьком экране меняется вся композиция: размеры текста,
+                  расположение блоков и способ взаимодействия. Интерфейс должен
+                  учитывать и мышь, и прикосновения.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="services"
+          class="services section container"
+          aria-labelledby="services-title"
+        >
+          <div class="section-label mono">
+            <span>03 / УСЛУГИ</span><span>НАЧНЁМ С ВАШЕЙ ЗАДАЧИ</span>
+          </div>
+          <div class="section-heading">
+            <h2 id="services-title" data-reveal>
+              Что могу сделать<br />для вашего <em>проекта.</em>
+            </h2>
+            <p>
+              Стоимость и срок зависят от задачи.<br />Сначала обсуждаем
+              результат и объём работы,<br class="desktop-break" />
+              затем согласуем условия.
+            </p>
+          </div>
+          <div id="service-list" class="service-list"></div>
+        </section>
+
+        <section
+          id="process"
+          class="process section container"
+          aria-labelledby="process-title"
+        >
+          <div class="section-label mono">
+            <span>04 / ПРОЦЕСС</span><span>ШАГ ЗА ШАГОМ</span>
+          </div>
+          <div class="section-heading">
+            <h2 id="process-title" data-reveal>Как я <em>работаю.</em></h2>
+            <p>От первого обсуждения<br />до передачи результата.</p>
+          </div>
+          <div id="process-grid" class="process-grid"></div>
+          <div class="trust-badges">
+            <span><i>◈</i> Промежуточный показ</span
+            ><span><i>⌁</i> Согласованные условия</span
+            ><span><i>▣</i> Внимание к адаптиву</span
+            ><span><i>↗</i> Понятная передача проекта</span>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer container">
+        <div class="footer-top mono">
+          <span>ЕСТЬ МЫСЛЬ? ПРЕВРАТИМ ЕЁ В ПРОЕКТ.</span
+          ><a href="#top">В НАЧАЛО ↑</a>
+        </div>
+        <h2 data-reveal>
+          Есть идея?<br />Давайте <em>обсудим.</em
+          ><span class="footer-asterisk" aria-hidden="true">✳</span>
+        </h2>
+        <div class="footer-main">
+          <p>
+            Расскажите, какой сайт, бот или инструмент вам нужен.<br
+              class="desktop-break"
+            />
+            Начнём с задачи и ожидаемого результата.
+          </p>
+          <div class="footer-buttons">
+            <button class="button button-light magnetic" data-contact>
+              Обсудить проект <span>↗</span></button
+            ><a
+              class="button button-outline magnetic"
+              href="https://t.me/askjjkkproject"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Telegram-канал <span>↗</span></a
+            ><a class="text-button" href="#projects">Все проекты ↑</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span data-year>2026</span> Александр / askjjkk</span>
+          <div>
+            <a
+              href="https://github.com/askjjkk"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub ↗</a
+            ><a href="mailto:askjjkk03@gmail.com">askjjkk03@gmail.com ↗</a>
+          </div>
+          <span class="footer-note mono">СОБРАНО С ВНИМАНИЕМ К ДЕТАЛЯМ</span>
+        </div>
+      </footer>
+    </div>
+
+    <dialog
+      id="contact-modal"
+      class="glass-dialog"
+      aria-labelledby="contact-title"
+      aria-describedby="contact-description"
+      data-lenis-prevent
+    >
+      <button class="dialog-close" data-close aria-label="Закрыть окно">
+        ×
+      </button>
+      <div class="dialog-content">
+        <span class="mono dialog-eyebrow">НАЧАЛО НОВОГО ПРОЕКТА / ↗</span>
+        <h2 id="contact-title">Расскажите<br /><em>о задаче.</em></h2>
+        <p id="contact-description">
+          Опишите, что хотите сделать. Чем больше полезных деталей, тем проще
+          оценить объём работы.
+        </p>
+        <form id="contact-form" novalidate>
+          <div class="form-pair">
+            <div class="form-field">
+              <label for="client-name">Имя <span>необязательно</span></label
+              ><input
+                id="client-name"
+                name="name"
+                autocomplete="name"
+                maxlength="100"
+                placeholder="Как к вам обращаться"
+              />
+            </div>
+            <div class="form-field">
+              <label for="client-contact"
+                >Контакт для ответа <span>*</span></label
+              ><input
+                id="client-contact"
+                name="contact"
+                autocomplete="email"
+                maxlength="200"
+                required
+                aria-describedby="contact-error"
+                placeholder="Почта, телефон или Telegram"
+              /><span class="field-error" id="contact-error"></span>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="client-service">Услуга <span>*</span></label
+            ><select
+              id="client-service"
+              name="service"
+              required
+              aria-describedby="service-error"
+            >
+              <option value="">Выберите услугу</option></select
+            ><span class="field-error" id="service-error"></span>
+          </div>
+          <div id="minecraft-fields" class="form-pair" hidden>
+            <div class="form-field">
+              <label for="client-version">Версия Minecraft <span>*</span></label
+              ><input
+                id="client-version"
+                name="version"
+                maxlength="60"
+                placeholder="Например, 1.21.1"
+                aria-describedby="version-error"
+              /><span class="field-error" id="version-error"></span>
+            </div>
+            <div class="form-field">
+              <label for="client-platform">Платформа <span>*</span></label
+              ><input
+                id="client-platform"
+                name="platform"
+                maxlength="100"
+                placeholder="Paper, Spigot, Fabric…"
+                aria-describedby="platform-error"
+              /><span class="field-error" id="platform-error"></span>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="client-description"
+              >Описание задачи <span>*</span></label
+            ><textarea
+              id="client-description"
+              name="description"
+              rows="4"
+              maxlength="6000"
+              required
+              aria-describedby="description-error"
+              placeholder="Что нужно получить? Какие функции и примеры есть?"
+            ></textarea
+            ><span class="field-error" id="description-error"></span>
+          </div>
+          <p class="mail-explanation">
+            Откроется почтовая программа. Проверьте письмо и отправьте его.
+          </p>
+          <div class="form-actions">
+            <button type="submit" class="button button-light">
+              Открыть письмо <span>↗</span></button
+            ><button
+              type="button"
+              class="button button-outline"
+              id="copy-request"
+            >
+              Скопировать заявку
+            </button>
+          </div>
+          <div
+            class="form-status"
+            id="form-status"
+            role="status"
+            aria-live="polite"
+          ></div>
+          <div id="manual-copy" class="form-field" hidden>
+            <label for="request-text">Текст для ручного копирования</label
+            ><textarea id="request-text" rows="6" readonly></textarea>
+          </div>
+        </form>
+        <div class="dialog-email">
+          <a href="mailto:askjjkk03@gmail.com">askjjkk03@gmail.com</a
+          ><button
+            id="copy-email"
+            class="text-button"
+            aria-label="Скопировать рабочую почту"
+          >
+            Скопировать ↗
+          </button>
+        </div>
+      </div>
+    </dialog>
+    <dialog
+      id="project-modal"
+      class="glass-dialog project-dialog"
+      aria-labelledby="project-title"
+      data-lenis-prevent
+    >
+      <button
+        class="dialog-close"
+        data-close
+        aria-label="Закрыть подробности проекта"
+      >
+        ×
+      </button>
+      <div class="dialog-content" id="project-detail"></div>
+    </dialog>
+    <noscript
+      ><div class="noscript-note">
+        Для интерактивных проектов включите JavaScript. Связь:
+        <a href="mailto:askjjkk03@gmail.com">askjjkk03@gmail.com</a> ·
+        <a href="https://github.com/askjjkk">GitHub</a>
+      </div></noscript
+    >
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
