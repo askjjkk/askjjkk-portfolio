@@ -317,3 +317,29 @@ test("зависшая таблица шрифтов не блокирует п�
   await page.locator(".footer [data-contact]").click();
   await expect(page.locator("#contact-modal")).toBeVisible();
 });
+
+for (const reducedMotion of ["no-preference", "reduce"]) {
+  test(`Продолжить переключает витрину мышью и клавиатурой: ${reducedMotion}`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion });
+    await openPage(page);
+    await page.locator(".quality-showcase").scrollIntoViewIfNeeded();
+    await expect(page.locator("#quality-counter")).toHaveText("01");
+    await page.locator(".spec-button").click({ timeout: 5000 });
+    await expect(page.locator("#quality-counter")).toHaveText("02");
+    await expect(page.locator('[data-slide="1"]')).toHaveClass(/is-active/);
+    await expect(page.locator("#quality-caption")).toHaveText("ПОНЯТНОЕ ВЗАИМОДЕЙСТВИЕ");
+    await expect(page.locator("#quality-caption")).toBeFocused();
+
+    await page.reload({ waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => window.__portfolioReady === true);
+    await page.locator(".quality-showcase").scrollIntoViewIfNeeded();
+    const next = page.getByRole("button", { name: "Продолжить" });
+    await next.focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator("#quality-counter")).toHaveText("02");
+    await expect(page.locator("#quality-caption")).toBeFocused();
+    await expect(next).not.toBeVisible();
+    await page.locator(".quality-chapter").nth(2).scrollIntoViewIfNeeded();
+    await expect(page.locator("#quality-counter")).toHaveText("03");
+  });
+}

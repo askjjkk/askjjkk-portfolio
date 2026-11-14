@@ -1163,6 +1163,7 @@
   pointer-events: none;
 }
 .quality-slide.is-active {
+  pointer-events: auto;
   opacity: 1;
   visibility: visible;
   transform: none;
@@ -1269,6 +1270,8 @@
   margin-top: 5px;
 }
 .spec-button {
+  width: 100%;
+  text-align: left;
   display: flex;
   justify-content: space-between;
   border-radius: 100px;

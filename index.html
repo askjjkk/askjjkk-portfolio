@@ -289,11 +289,24 @@
                           ><small>Одна визуальная система</small>
                         </div>
                       </div>
-                      <span class="spec-button">Продолжить <i>↗</i></span>
+                      <button
+                        class="spec-button"
+                        type="button"
+                        data-quality-next
+                        aria-controls="quality-interaction"
+                      >
+                        Продолжить <i aria-hidden="true">↗</i>
+                      </button>
                     </div>
                   </div>
                 </div>
-                <div class="quality-slide" data-slide="1" aria-hidden="true">
+                <div
+                  class="quality-slide"
+                  id="quality-interaction"
+                  data-slide="1"
+                  aria-hidden="true"
+                  inert
+                >
                   <div class="interaction-spec">
                     <div class="mini-nav">
                       <span class="wordmark">askjjkk</span
@@ -313,7 +326,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="quality-slide" data-slide="2" aria-hidden="true">
+                <div class="quality-slide" data-slide="2" aria-hidden="true" inert>
                   <div class="device-spec">
                     <div class="device-desktop">
                       <div class="device-top"><i></i><i></i><i></i></div>
@@ -333,7 +346,9 @@
                 </div>
               </div>
               <div class="showcase-footer mono">
-                <span id="quality-caption">ВИЗУАЛЬНАЯ ЦЕЛЬНОСТЬ</span>
+                <span id="quality-caption" role="status" tabindex="-1"
+                  >ВИЗУАЛЬНАЯ ЦЕЛЬНОСТЬ</span
+                >
                 <div class="slide-dots" aria-hidden="true">
                   <i class="active"></i><i></i><i></i>
                 </div>

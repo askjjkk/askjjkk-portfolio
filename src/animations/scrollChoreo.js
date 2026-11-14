@@ -15,6 +15,7 @@ export function initScrollChoreo(lenis, reducedMotion) {
     activeSlide = index;
     slides.forEach((slide, i) => {
       slide.classList.toggle("is-active", index === i);
+      slide.inert = index !== i;
       slide.setAttribute("aria-hidden", index !== i ? "true" : "false");
     });
     document
@@ -23,6 +24,10 @@ export function initScrollChoreo(lenis, reducedMotion) {
     document.getElementById("quality-counter").textContent = `0${index + 1}`;
     document.getElementById("quality-caption").textContent = captions[index];
   };
+  document.querySelector("[data-quality-next]").addEventListener("click", () => {
+    setSlide(1);
+    document.getElementById("quality-caption").focus({ preventScroll: true });
+  });
   const chapters = [...document.querySelectorAll(".quality-chapter")];
   const syncQuality = () => {
     const index = chapters.reduce(
