@@ -2,6 +2,7 @@ import "./styles/main.css";
 import "./styles/components.css";
 import "./styles/responsive.css";
 import "./styles/business-preview.css";
+import "./styles/music-player.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { renderContent } from "./components/renderContent.js";
@@ -11,6 +12,7 @@ import { initScrollChoreo } from "./animations/scrollChoreo.js";
 import { initModals } from "./components/modal.js";
 import { initCursor } from "./components/cursor.js";
 import { initSpotlights } from "./components/spotlight.js";
+import { initMusicPlayer } from "./components/musicPlayer.js";
 
 gsap.registerPlugin(ScrollTrigger);
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -20,6 +22,7 @@ const lenis = initSmoothScroll(reducedMotion);
 initModals(lenis, reducedMotion);
 initCursor(reducedMotion);
 initSpotlights();
+initMusicPlayer();
 
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileNav = document.getElementById("mobile-nav");

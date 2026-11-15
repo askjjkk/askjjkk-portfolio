@@ -243,9 +243,35 @@
             <span>02 / ОБО МНЕ</span><span>ЗА ИНТЕРФЕЙСОМ — ЧЕЛОВЕК</span>
           </div>
           <div class="about-intro">
-            <h2 id="about-title" data-reveal>
-              Внешний вид.<br />Удобство. <em>Детали.</em>
-            </h2>
+            <div class="about-lead">
+              <h2 id="about-title" data-reveal>
+                Внешний вид.<br />Удобство. <em>Детали.</em>
+              </h2>
+              <section class="music-player" aria-label="Музыка по желанию">
+                <div class="music-heading">
+                  <span>МУЗЫКА ПО ЖЕЛАНИЮ</span>
+                  <span class="music-signal" aria-hidden="true"><i></i><i></i><i></i></span>
+                </div>
+                <div class="music-track">
+                  <img class="music-cover" src="%BASE_URL%media/cupsize-cover.webp" width="56" height="56" loading="lazy" alt="" />
+                  <div>
+                    <h3 class="music-title">Ванна, красный пол</h3>
+                    <p class="music-artist">CUPSIZE</p>
+                  </div>
+                  <button class="music-toggle" type="button" data-music-toggle aria-label="Включить музыку" aria-pressed="false" title="Включить музыку" hidden>
+                    <svg class="music-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" /></svg>
+                    <svg class="music-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z" /></svg>
+                  </button>
+                </div>
+                <audio class="music-native" id="music-audio" controls preload="none" src="%BASE_URL%media/cupsize-vanna-krasny-pol.mp3"></audio>
+                <div class="music-transport" hidden>
+                  <span data-music-elapsed aria-hidden="true">0:00</span>
+                  <input class="music-seek" data-music-seek type="range" min="0" max="1" step="1" value="0" disabled aria-label="Позиция в треке" />
+                  <span data-music-duration aria-hidden="true">—:—</span>
+                </div>
+                <p class="music-status" role="status" data-music-status>Нажмите ▶, если хочется музыки</p>
+              </section>
+            </div>
             <div>
               <p>
                 Привет! Я Александр — askjjkk. Учусь в ЮЗГУ на направлении
