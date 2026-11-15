@@ -10,6 +10,7 @@ export function initScrollChoreo(lenis, reducedMotion) {
     "КОМПЬЮТЕР И ТЕЛЕФОН",
   ];
   let activeSlide = 0;
+  let manualScrollY = null;
   const setSlide = (index) => {
     if (activeSlide === index) return;
     activeSlide = index;
@@ -25,11 +26,17 @@ export function initScrollChoreo(lenis, reducedMotion) {
     document.getElementById("quality-caption").textContent = captions[index];
   };
   document.querySelector("[data-quality-next]").addEventListener("click", () => {
+    manualScrollY = window.scrollY;
     setSlide(1);
     document.getElementById("quality-caption").focus({ preventScroll: true });
   });
   const chapters = [...document.querySelectorAll(".quality-chapter")];
   const syncQuality = () => {
+    if (manualScrollY !== null) {
+      if (ScrollTrigger.isRefreshing || Math.abs(window.scrollY - manualScrollY) < 2)
+        return;
+      manualScrollY = null;
+    }
     const index = chapters.reduce(
       (current, chapter, i) =>
         chapter.getBoundingClientRect().top < window.innerHeight * 0.55
@@ -44,7 +51,10 @@ export function initScrollChoreo(lenis, reducedMotion) {
     start: "top bottom",
     end: "bottom top",
     onUpdate: syncQuality,
-    onRefresh: syncQuality,
+    onRefresh: () => {
+      if (manualScrollY !== null) manualScrollY = window.scrollY;
+      else syncQuality();
+    },
   });
   if (!reducedMotion) {
     gsap.utils.toArray("[data-reveal]").forEach((el) => {

@@ -329,6 +329,8 @@ for (const reducedMotion of ["no-preference", "reduce"]) {
     await expect(page.locator('[data-slide="1"]')).toHaveClass(/is-active/);
     await expect(page.locator("#quality-caption")).toHaveText("ПОНЯТНОЕ ВЗАИМОДЕЙСТВИЕ");
     await expect(page.locator("#quality-caption")).toBeFocused();
+    await page.evaluate(() => document.fonts.dispatchEvent(new Event("loadingdone")));
+    await expect(page.locator("#quality-counter")).toHaveText("02");
 
     await page.reload({ waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => window.__portfolioReady === true);
