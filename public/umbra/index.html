@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="Umbra для Minecraft Java. Профили и моды в лаунчере, настраиваемый HUD и эффекты в игре.">
+  <title>Umbra — лаунчер и клиент для Minecraft: Java Edition</title>
+  <link rel="icon" href="assets/umbra-mark.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержанию</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#main"><img src="assets/umbra-mark.png" alt=""><span>Umbra</span></a>
+      <nav aria-label="Навигация">
+        <a href="#preview">Клиент</a>
+        <a href="#release">Бета</a>
+        <a href="#plus">Plus</a>
+      </nav>
+      <a class="button ghost telegram" href="https://t.me/umbra_client" target="_blank" rel="noreferrer">Telegram <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-head">
+        <div>
+          <p class="eyebrow">Лаунчер и клиент для Minecraft: Java Edition</p>
+          <h1 id="hero-title">Игра<br>под себя.</h1>
+        </div>
+        <div class="hero-copy">
+          <p>Собирай профили, устанавливай контент и настраивай игру на ходу. Umbra объединяет лаунчер и клиент в одном чёрном стекле.</p>
+          <div class="actions">
+            <a class="button primary" href="#preview">Посмотреть клиент</a>
+            <a class="button ghost" href="#release">Статус беты</a>
+          </div>
+        </div>
+      </div>
+      <div class="showcase glass" id="preview">
+        <div class="showcase-bar">
+          <span class="showcase-name">Umbra <span aria-hidden="true">/</span> Предпросмотр</span>
+          <div class="tabs" aria-label="Интерфейс Umbra" role="tablist">
+            <button type="button" role="tab" id="launcher-tab" aria-selected="true" aria-controls="launcher-panel">Лаунчер</button>
+            <button type="button" role="tab" id="game-tab" aria-selected="false" aria-controls="game-panel" tabindex="-1">В игре</button>
+          </div>
+        </div>
+        <figure id="launcher-panel" role="tabpanel" aria-labelledby="launcher-tab" tabindex="0">
+          <img src="assets/assistant-beta13.png" alt="Umbra Ассистент создал профиль Fabric и установил Sodium" width="1280" height="800" fetchpriority="high">
+          <figcaption>Ассистент готовит профили и разбирает вылеты локально.</figcaption>
+        </figure>
+        <figure id="game-panel" role="tabpanel" aria-labelledby="game-tab" tabindex="0" hidden>
+          <img src="assets/wardrobe.png" alt="Чёрное меню примерочной Umbra с поворотной моделью игрока" width="1440" height="900" loading="lazy">
+          <figcaption>Внутриигровая примерочная и просмотр косметики на персонаже.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="features wrap" aria-label="Возможности">
+      <article><h2>Профили и моды</h2><p>Свои миры, настройки и загрузчик для каждой сборки. Каталог Modrinth ставит моды вместе с обязательными зависимостями.</p></article>
+      <article><h2>HUD и эффекты</h2><p>Размеры и позиции виджетов, гибкий прицел, музыка в Dynamic Island и предпросмотр, который остаётся на экране.</p></article>
+      <article><h2>Umbra Ассистент</h2><p>Опиши версию и проекты, проверь план и создай профиль. При вылете Ассистент найдёт известные причины в локальном журнале.</p></article>
+    </section>
+    <section class="wrap release" id="release" aria-labelledby="release-title">
+      <div>
+        <p class="eyebrow">Текущая сборка</p>
+        <h2 id="release-title">Локальная бета</h2>
+        <p>Проверяем установщик и игровой клиент. Публичная ссылка появится после проверки загрузки и установки.</p>
+      </div>
+      <div class="glass release-info">
+        <dl>
+          <div><dt>Umbra</dt><dd>0.3.0-beta.15</dd></div>
+          <div><dt>Игровой клиент</dt><dd>Fabric 1.21.11</dd></div>
+          <div><dt>Платформа</dt><dd>Windows x64</dd></div>
+        </dl>
+        <a class="text-link" href="https://t.me/umbra_client" target="_blank" rel="noreferrer">Новости разработки <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+    <section class="wrap plus" id="plus" aria-labelledby="plus-title">
+      <div>
+        <p class="eyebrow">Готовим к запуску</p>
+        <h2 id="plus-title">Umbra Plus</h2>
+        <p>Бесплатная версия включает лаунчер, весь игровой клиент и локальную диагностику. Для Plus готовим облачного ассистента, синхронизацию и резервные копии настроек.</p>
+      </div>
+      <div class="glass plus-info">
+        <h3>Предложенные цены</h3>
+        <div class="pricing"><span>День</span><b>39 ₽</b><span>Неделя</span><b>109 ₽</b><span>Месяц</span><b>249 ₽</b>
+          <span>3 месяца</span><b>649 ₽</b><span>Полгода</span><b>1 090 ₽</b><span>Год</span><b>1 790 ₽</b></div>
+        <p>Покупка откроется после тестирования оплаты.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap footer">
+    <a class="brand brand-small" href="#main"><img src="assets/umbra-mark.png" alt=""><span>Umbra</span></a>
+    <p>Umbra — неофициальный проект для Minecraft: Java Edition. Разработка и выпуск ведутся независимо от Mojang и Microsoft.</p>
+    <a href="privacy.html">Приватность</a>
+    <a href="https://t.me/askjjkkproject" target="_blank" rel="noreferrer">Автор</a>
+  </footer>
+</body>
+</html>
