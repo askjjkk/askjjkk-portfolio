@@ -4,79 +4,151 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#152125">
-  <title>Ремонт стартеров и генераторов в Курске</title>
+  <meta name="theme-color" content="#111418">
   <meta name="description" content="Ремонт стартеров и генераторов для иномарок и продажа запчастей к ним. Курск, ул. 50 лет Октября, 177, 2-й этаж.">
+  <title>Ремонт стартеров и генераторов в Курске</title>
   <link rel="preload" href="../assets/fonts/golos-ru.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../workshop.css">
+  <link rel="stylesheet" href="../workshop.css?v=2">
+  <script src="../workshop.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">К содержимому</a>
-  <header class="page-header">
+  <header class="header">
     <div class="shell header-inner">
-      <a class="brand" href="#main"><span class="brand-mark" aria-hidden="true"></span><span>Стартеры <span class="brand-join">и</span> генераторы</span></a>
+      <a class="brand" href="#main"><span class="brand-mark" aria-hidden="true">ϟ</span><span>Стартеры<br>и генераторы</span></a>
       <nav aria-label="По странице">
         <a href="#services">Услуги</a>
+        <a href="#prepare">Подготовить обращение</a>
         <a href="#contacts">Контакты</a>
       </nav>
-      <a class="header-phone" href="tel:+79107301495">+7 (910) 730-14-95</a>
+      <a class="phone" href="tel:+79107301495">+7 (910) 730-14-95 <span aria-hidden="true">↗</span></a>
     </div>
   </header>
-
   <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-visual">
+        <img src="../assets/real/bench.webp" alt="Автомобильный генератор на верстаке" width="1280" height="853" fetchpriority="high">
+      </div>
       <div class="shell hero-inner">
         <div class="hero-copy">
-          <a class="hero-location" href="https://2gis.ru/kursk/firm/10274364930988589" target="_blank" rel="noopener"><span class="location-dot" aria-hidden="true"></span>Курск · 50 лет Октября, 177</a>
-          <h1 id="hero-title">Ремонт стартеров<br> и генераторов <span>для иномарок</span></h1>
-          <p>Продаём запчасти к стартерам и генераторам. Позвоните, чтобы обсудить ремонт или уточнить наличие детали.</p>
-          <div class="actions">
-            <a class="button button-primary" href="tel:+79107301495">Позвонить мастеру</a>
-            <a class="button button-outline" href="https://2gis.ru/kursk/firm/10274364930988589" target="_blank" rel="noopener">Как проехать <span aria-hidden="true">↗</span></a>
-          </div>
+          <a class="location mono" href="https://2gis.ru/kursk/firm/10274364930988589" target="_blank" rel="noopener">Курск · 50 лет Октября, 177</a>
+          <h1 id="hero-title">Ремонт стартеров<br>и генераторов<br><span>для иномарок</span></h1>
+          <p>Ремонтируем агрегаты и продаём запчасти к ним. Уточните по телефону, когда можно приехать и есть ли нужная деталь.</p>
+          <div class="actions"><a class="button button-gold" href="tel:+79107301495">Позвонить мастеру <span aria-hidden="true">↗</span></a><a class="button button-outline" href="https://2gis.ru/kursk/firm/10274364930988589" target="_blank" rel="noopener">Как проехать <span aria-hidden="true">↗</span></a></div>
         </div>
-        <figure class="hero-image">
-          <img src="../assets/real/bench.webp" alt="Автомобильный генератор на верстаке" width="1280" height="853" fetchpriority="high">
-        </figure>
       </div>
     </section>
+    <nav class="quick shell" aria-label="Направления мастерской">
+      <a href="#starter">Ремонт стартера <span aria-hidden="true">↓</span></a>
+      <a href="#alternator">Ремонт генератора <span aria-hidden="true">↓</span></a>
+      <a href="#parts">Купить запчасть <span aria-hidden="true">↓</span></a>
+    </nav>
 
-    <section class="services shell" id="services" aria-labelledby="services-title">
+    <section class="section shell" id="services" aria-labelledby="services-title">
       <h2 id="services-title">Ремонт и запчасти</h2>
       <div class="service-grid">
-        <article class="service">
-          <h3>Нужен ремонт</h3>
-          <p>Стартер щёлкает, двигатель плохо прокручивается или загорелся индикатор аккумулятора? Расскажите мастеру, что происходит с машиной.</p>
-          <p class="service-note"><strong>К звонку</strong><span>Приготовьте марку, модель и год выпуска автомобиля.</span></p>
-        </article>
-        <article class="service">
-          <h3>Нужна запчасть</h3>
-          <p>Продаём запчасти к стартерам и генераторам иномарок. Позвоните, чтобы уточнить, какая деталь подходит и есть ли она в наличии.</p>
-          <p class="service-note"><strong>К звонку</strong><span>Пригодится артикул или фото маркировки на корпусе агрегата.</span></p>
-        </article>
+        <article class="service-card" id="starter">
+      <div class="service-image"><img src="../assets/real/starter.webp" alt="Автомобильный стартер в сборе" width="960" height="720" loading="lazy"></div>
+      <div class="service-copy">
+        <h3>Ремонт стартера</h3>
+        <p>При запуске слышны щелчки или стартер с трудом прокручивает двигатель? Расскажите мастеру, при каких условиях это происходит.</p>
+        <a class="text-link" href="#prepare" data-pick="starter">Описать проблему <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+        <article class="service-card" id="alternator">
+      <div class="service-image"><img src="../assets/real/alternator.webp" alt="Генератор в моторном отсеке автомобиля" width="1080" height="720" loading="lazy"></div>
+      <div class="service-copy">
+        <h3>Ремонт генератора</h3>
+        <p>Загорелся индикатор аккумулятора или пропадает зарядка? Уточните, когда это бывает: сразу после запуска или уже в дороге.</p>
+        <a class="text-link" href="#prepare" data-pick="alternator">Описать проблему <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+      </div>
+      <article class="parts" id="parts">
+        <div class="parts-copy">
+          <h3>Запчасти к стартерам<br>и генераторам</h3>
+          <p>Если нужен отдельный компонент, подготовьте артикул или фото маркировки агрегата. Мастер сможет уточнить совместимость и наличие.</p>
+          <a class="text-link" href="#prepare" data-pick="parts">Записать данные детали <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="parts-photo"><img src="../assets/real/parts.webp" alt="Снятые детали разобранного стартера" width="943" height="324" loading="lazy"></div>
+      </article>
+    </section>
+
+    <section class="prep-section" id="prepare" aria-labelledby="prepare-title">
+      <div class="section shell prep-layout">
+        <div class="prep-intro">
+          <h2 id="prepare-title">Что сказать<br>мастеру</h2>
+          <p>Подготовьте короткое описание перед звонком или визитом.</p>
+          <ul class="prep-list">
+            <li>Марка, модель и год выпуска автомобиля</li>
+            <li>При ремонте — что происходит и когда</li>
+            <li>Для запчасти — артикул или маркировка, если есть</li>
+          </ul>
+          <a class="text-link" href="tel:+79107301495">+7 (910) 730-14-95 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="prep-panel" id="prep-panel" hidden>
+          <form id="prepare-form">
+            <fieldset>
+              <legend>Что вам нужно?</legend>
+              <div class="choices">
+                <label><input type="radio" name="mode" value="starter" checked><span>Стартер</span></label>
+                <label><input type="radio" name="mode" value="alternator"><span>Генератор</span></label>
+                <label><input type="radio" name="mode" value="parts"><span>Запчасть</span></label>
+              </div>
+            </fieldset>
+            <label for="car">Автомобиль <small>по желанию</small></label>
+            <input id="car" name="car" maxlength="120" placeholder="Например, Kia Rio, 2016">
+            <label for="problem" id="problem-label">Что происходит при запуске?</label>
+            <textarea id="problem" name="problem" rows="3" maxlength="420" required placeholder="Например, слышен щелчок, двигатель не крутится"></textarea>
+            <button class="button button-gold" type="submit">Собрать текст</button>
+          </form>
+          <div id="message-panel" class="message-panel" hidden>
+            <label for="message">Текст для мастера</label>
+            <textarea id="message" rows="5" readonly></textarea>
+            <div class="message-actions">
+              <button class="button button-outline" id="copy-message" type="button">Скопировать текст</button>
+              <a class="text-link" id="open-message" href="https://wa.me/79107301495" target="_blank" rel="noopener">Открыть в WhatsApp <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <p class="feedback" id="message-feedback" role="status"></p>
+        </div>
       </div>
     </section>
 
-    <section class="contact-section" id="contacts" aria-labelledby="contacts-title">
-      <div class="shell contact-inner">
+    <section class="section shell faq" id="questions" aria-labelledby="faq-title">
+      <h2 id="faq-title">Частые вопросы</h2>
+      <div class="faq-list">
+        <details><summary>Сколько стоит ремонт и сколько он займёт?</summary><p>Стоимость и сроки зависят от агрегата, состояния и нужных запчастей. Позвоните мастеру и опишите проблему, чтобы уточнить, когда можно приехать и как узнать цену.</p></details>
+        <details><summary>Можно купить запчасть отдельно?</summary><p>Да, продаём запчасти к стартерам и генераторам. Назовите артикул, если он есть, или подготовьте фото маркировки. Наличие уточняйте по телефону.</p></details>
+        <details><summary>Можно приехать на машине или нужно снять агрегат?</summary><p>Позвоните перед выездом. Мастер скажет, как удобнее принять автомобиль или снятый стартер либо генератор.</p></details>
+        <details><summary>Где вход и когда работает мастерская?</summary><p>Мастерская на втором этаже по адресу: Курск, ул. 50 лет Октября, 177. Вход можно посмотреть на карте. Перед поездкой уточните часы работы по телефону.</p></details>
+      </div>
+    </section>
+
+    <section class="contacts" id="contacts" aria-labelledby="contacts-title">
+      <div class="section shell contact-layout">
         <div>
           <h2 id="contacts-title">Как нас найти</h2>
-          <address>Курск, ул. 50 лет Октября, 177 <span>2-й этаж</span></address>
-          <p>В карточке 2ГИС можно посмотреть вход и график работы.</p>
-          <a class="button button-outline" href="https://2gis.ru/kursk/firm/10274364930988589" target="_blank" rel="noopener">Как проехать <span aria-hidden="true">↗</span></a>
+          <address id="address">Курск, ул. 50 лет Октября, 177, 2-й этаж</address>
+          <p>В карточке 2ГИС можно посмотреть, где вход, и проложить маршрут.</p>
+          <div class="actions">
+            <a class="button button-outline" href="https://2gis.ru/kursk/firm/10274364930988589" target="_blank" rel="noopener">Как проехать <span aria-hidden="true">↗</span></a>
+            <button id="copy-address" class="button button-outline" type="button" hidden>Скопировать адрес</button>
+          </div>
+          <p class="feedback" id="address-feedback" role="status"></p>
         </div>
-        <div class="contact-call">
+        <div class="contact-phone">
           <h3>Телефон мастерской</h3>
-          <a href="tel:+79107301495" class="contact-number">+7 (910) 730-14-95</a>
-          <p>Уточните стоимость и сроки ремонта, наличие запчасти или возможность приехать на машине.</p>
+          <a class="contact-number" href="tel:+79107301495">+7 (910) 730-14-95</a>
+          <p>Позвоните, чтобы уточнить график и договориться о визите.</p>
+          <a class="text-link" href="https://2gis.ru/kursk/firm/10274364930988589/tab/reviews" target="_blank" rel="noopener">Отзывы в 2ГИС <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
   </main>
-
   <footer class="shell footer">
-    <p>Ремонт стартеров и генераторов · Курск</p>
-    <a href="../assets/workshop-credits.html">Источник фотографии</a>
+    <a class="brand" href="#main"><span class="brand-mark" aria-hidden="true">ϟ</span><span>Стартеры<br>и генераторы</span></a>
+    <a href="../assets/workshop-credits.html">Источники фотографий</a>
   </footer>
 </body>
 </html>
